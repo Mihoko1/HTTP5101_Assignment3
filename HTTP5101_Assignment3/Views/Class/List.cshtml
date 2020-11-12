@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HTTP5101_Assignment3.Models.Class>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Class List</h2>
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Class Code</th>
+            <th scope="col">Class Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var classes in Model)
+        {
+        <tr>
+            <th scope="row">
+                @classes.ClassId
+            </th>
+            <td>
+                <a href="/Class/Show/@classes.ClassId">@classes.ClassCode</a>
+            </td>
+            <td>
+                <a href="/Class/Show/@classes.ClassId">@classes.ClassName</a>
+            </td>
+        </tr>
+
+        }
+
+
+    </tbody>
+</table>
+

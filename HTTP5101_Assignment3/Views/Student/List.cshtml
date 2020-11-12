@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<HTTP5101_Assignment3.Models.Student>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Student List</h2>
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+        @foreach (var student in Model)
+        {
+            <tr>
+                <th scope="row">
+                    @student.StudentId
+                </th>
+                <td>
+                    <a href="/Student/Show/@student.StudentId">@student.StudentFname @student.StudentLname</a>
+                </td>
+            </tr>
+
+        }
+
+
+    </tbody>
+</table>

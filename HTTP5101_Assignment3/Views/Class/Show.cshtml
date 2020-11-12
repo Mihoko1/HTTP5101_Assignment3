@@ -1,0 +1,32 @@
+﻿@model HTTP5101_Assignment3.Models.Class
+@{
+    ViewBag.Title = "Show";
+}
+
+<a class="navlink" href="/Class/List">Go Back To Classes</a>
+<div>
+
+    <h2>@Model.ClassCode - @Model.ClassName</h2>
+    <table class="table table-sm">
+        <tbody>
+            <tr>
+                <th scope="row">Instructor</th>
+                <td>@Model.TeacherFname @Model.TeacherLname</td>
+            </tr>
+            <tr>
+                <th scope="row">Start Date</th>
+                <td>@Model.StartDate</td>
+
+            </tr>
+            <tr>
+                <th scope="row">End Date</th>
+                <td>@Model.FinishDate</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>

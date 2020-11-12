@@ -1,0 +1,38 @@
+﻿@model HTTP5101_Assignment3.Models.Teacher
+
+@{
+    ViewBag.Title = "Show";
+}
+<a class="navlink" href="/Teacher/List">Go Back To Teachers</a>
+
+
+    <h2>@Model.TeacherFname @Model.TeacherLname</h2>
+
+        <table class="table table-sm">
+            <tbody>
+                <tr>
+                    <th scope="row">Employee Number</th>
+                    <td>@Model.EmployeeNumber</td>
+                </tr>
+                <tr>
+                    <th scope="row">Hire Date</th>
+                    <td>@Model.HireDate</td>
+                </tr>
+                <tr>
+                    <th scope="row">Class Code</th>
+                    <td>@Model.ClassCode</td>
+                </tr>
+                <tr>
+                    <th scope="row">Class Name</th>
+                    <td>@Model.ClassName</td>
+                </tr>
+                <tr>
+                    <th scope="row">Salary</th>
+                    <td>$ @Model.Salary</td>
+                </tr>
+            </tbody>
+        </table>
+
+</>
+
+
