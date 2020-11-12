@@ -14,8 +14,16 @@ namespace HTTP5101_Assignment3.Controllers
     public class TeacherDataController : ApiController
     {
         // Teacher class allows to access MySQL Database. 
-        private SchoolDbContext School = new SchoolDbContext(); 
-        
+        private SchoolDbContext School = new SchoolDbContext();
+
+        //This Controller will access to teachers table.
+        /// <summary>
+        /// Returns a list of Classes
+        /// </summary>
+        /// <example>GET api/ClassData/ListClasses</example>
+        /// <returns>
+        /// A list of teachers (teacher id, teacher first name, tacher last name)
+        /// </returns>
         [HttpGet]
         public IEnumerable<Teacher> ListTeachers() 
         { 
@@ -46,12 +54,14 @@ namespace HTTP5101_Assignment3.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFname = (string)ResultSet["teacherfname"];
                 string TeacherLname = (string)ResultSet["teacherlname"];
-               
+                string EmployeeNumber = (string)ResultSet["employeenumber"];
+
                 Teacher NewTeacher = new Teacher();
                 NewTeacher.TeacherId = TeacherId;
                 NewTeacher.TeacherFname = TeacherFname;
                 NewTeacher.TeacherLname = TeacherLname;
-                
+                NewTeacher.EmployeeNumber = EmployeeNumber;
+
                 Teachers.Add(NewTeacher);
    
             }
@@ -60,6 +70,15 @@ namespace HTTP5101_Assignment3.Controllers
             return Teachers;
         }
 
+        //This Controller will access to students table.
+        /// <summary>
+        /// Returns teacher data which teacher id is matching with parameter and class name and code which this teacher teaches.
+        /// </summary>
+        /// <example>GET api/TeacherData/FindTeacher/{id}</example>
+        /// <returns> 
+        /// Teacher data (teacher id, employee number, teacher first name, teacher last name, hire date, salary) and class data (class code and class name)
+        /// </returns>
+        [HttpGet]
         public Teacher FindTeacher(int id)
         {
             Teacher NewTeacher = new Teacher();
@@ -92,6 +111,8 @@ namespace HTTP5101_Assignment3.Controllers
                 DateTime HireDate = (DateTime)ResultSet["hiredate"];
                 decimal Salary = (decimal)ResultSet["salary"];
                 string ClassCode = "";
+
+                // Check if retrieved data is null or not. If class code is null, replace to "N/A"
                 if (ResultSet["classcode"] == DBNull.Value)
                 {
                     ClassCode = "N/A";
@@ -100,7 +121,9 @@ namespace HTTP5101_Assignment3.Controllers
                 {
                     ClassCode = (string)ResultSet["classcode"];
                 }
-                 
+
+
+                // Check if retrieved data is null or not. If class name is null, replace to "N/A"
                 string ClassName = "";
                 if (ResultSet["className"] == DBNull.Value)
                 {

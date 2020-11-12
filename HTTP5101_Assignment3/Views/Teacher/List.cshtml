@@ -9,12 +9,11 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Employee Number</th>
             <th scope="col">Name</th>
         </tr>
     </thead>
     <tbody>
-
-
 
         @foreach (var teacher in Model)
         {
@@ -22,6 +21,9 @@
             <th scope="row">
                 @teacher.TeacherId
             </th>
+            <td>
+                <a href="/Teacher/Show/@teacher.TeacherId">@teacher.EmployeeNumber</a>
+            </td>
             <td>
                 <a href="/Teacher/Show/@teacher.TeacherId">@teacher.TeacherFname @teacher.TeacherLname</a>
             </td>

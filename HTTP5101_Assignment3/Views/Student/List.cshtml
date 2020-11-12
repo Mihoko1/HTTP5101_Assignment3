@@ -11,6 +11,7 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Student Number</th>
             <th scope="col">Name</th>
         </tr>
     </thead>
@@ -20,14 +21,17 @@
 
         @foreach (var student in Model)
         {
-            <tr>
-                <th scope="row">
-                    @student.StudentId
-                </th>
-                <td>
-                    <a href="/Student/Show/@student.StudentId">@student.StudentFname @student.StudentLname</a>
-                </td>
-            </tr>
+        <tr>
+            <th scope="row">
+                @student.StudentId
+            </th>
+            <td>
+                <a href="/Student/Show/@student.StudentId">@student.StudentNumber </a>
+            </td>
+            <td>
+                <a href="/Student/Show/@student.StudentId">@student.StudentFname @student.StudentLname</a>
+            </td>
+        </tr>
 
         }
 

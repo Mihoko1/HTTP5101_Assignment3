@@ -15,7 +15,7 @@ namespace HTTP5101_Assignment3.Controllers
         private SchoolDbContext School = new SchoolDbContext();
 
 
-        //This Controller Will access the Class table.
+        //This Controller Will access to classes table.
         /// <summary>
         /// Returns a list of Classes
         /// </summary>
@@ -67,11 +67,11 @@ namespace HTTP5101_Assignment3.Controllers
         }
 
 
-        //This Controller Will access the Class and Teacher table.
+        //This Controller Will access the classes and teachers table.
         /// <summary>
         /// Returns class data which class id is matching with parameter and teacher info who teaches that class
         /// </summary>
-        /// <example>GET api/ClassData/ListClasses/{id}</example>
+        /// <example>GET api/ClassData/FindClass/{id}</example>
         /// <returns> 
         /// class data (class id, class code, class name, teacher id) and Teacher's information (teacher first name, last name, ) 
         /// </returns>

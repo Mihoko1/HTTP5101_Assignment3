@@ -10,14 +10,20 @@ using MySql.Data.MySqlClient;
 namespace HTTP5101_Assignment3.Controllers
 {
 
-
     public class StudentDataController : ApiController
     {
-
 
         // Student class allows to access MySQL Database. 
         private SchoolDbContext School = new SchoolDbContext();
 
+        //This Controller will access to students table.
+        /// <summary>
+        /// Returns a list of Students
+        /// </summary>
+        /// <example>GET api/StudentData/ListStudents</example>
+        /// <returns>
+        /// A list of students (student id, student first name, student last name, student number)
+        /// </returns>
         [HttpGet]
         public IEnumerable<Student> ListStudents()
         {
@@ -48,17 +54,12 @@ namespace HTTP5101_Assignment3.Controllers
                 string StudentFname = (string)ResultSet["studentfname"];
                 string StudentLname = (string)ResultSet["studentlname"];
                 string StudentNumber = (string)ResultSet["studentnumber"];
-                DateTime EnrolDate = (DateTime)ResultSet["enroldate"];
-
-
-
+                
                 Student NewStudent = new Student();
                 NewStudent.StudentId = StudentId;
                 NewStudent.StudentFname = StudentFname;
                 NewStudent.StudentLname = StudentLname;
                 NewStudent.StudentNumber = StudentNumber;
-                NewStudent.EnrolDate = EnrolDate;
-
 
                 Students.Add(NewStudent);
 
@@ -68,6 +69,15 @@ namespace HTTP5101_Assignment3.Controllers
             return Students;
         }
 
+        //This Controller will access to students table.
+        /// <summary>
+        /// Returns student data which student id is matching with parameter.
+        /// </summary>
+        /// <example>GET api/StudentData/FindStudent/{id}</example>
+        /// <returns> 
+        /// student data (student id, student number, student first name, student last name, enroll date)
+        /// </returns>
+        [HttpGet]
         public Student FindStudent(int id)
         {
             Student NewStudent = new Student();
